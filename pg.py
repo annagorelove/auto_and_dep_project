@@ -1,11 +1,7 @@
-from psycopg2 import connect
-import os 
-import configparser
+import psycopg2 
+import os
 
-dirname = os.path.dirname(__file__)
-config = configparser.ConfigParser()
-config.read(os.path.join(dirname, 'config.ini'))
-
+dirname = os.path.dirname(__file__) 
 
 class Database:
     def __init__(self, host, port, database, user, password):
@@ -15,7 +11,7 @@ class Database:
         self.user = user 
         self.password = password
 
-        self.connection = connect(
+        self.connection = psycopg2.connect(
             host=host,
             port=port,
             database=database,
